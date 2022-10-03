@@ -14,14 +14,14 @@ public class UpdateStudentDemo {
         // create session
         Session session = factory.getCurrentSession();
         try {
-            int id = 1;
+            int id = 7;
             // Get new session and start transaction
             session = factory.getCurrentSession();
             session.beginTransaction();
             // retrieve student based on ID on primary key
             System.out.println("\n getting student with ID" + id);
             Student myStudent = session.get(Student.class, id);
-            myStudent.setFirstName("Updated name");
+            session.delete(myStudent);
             // commit the transaction
             session.getTransaction().commit();
         }finally {
